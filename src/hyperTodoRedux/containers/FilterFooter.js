@@ -1,18 +1,12 @@
-import { h } from "hyperapp"
 import Footer from '../components/Footer'
-import store from '../store'
 import { setVisibilityFilter } from '../actions'
+import { connect } from '../store.js'
 
-const React = {
-  createElement: h
-}
-
-const dispatch = filterType => store.dispatch(setVisibilityFilter(filterType))
-
-const FilterFooter = () => {
-  return (
-    <Footer setVisibilityFilter={dispatch} />
-  )
-}
+const FilterFooter = connect(
+  () => undefined,
+  dispatch => ({
+    setVisibilityFilter: filterType => dispatch(setVisibilityFilter(filterType))
+  })
+)(Footer)
 
 export default FilterFooter

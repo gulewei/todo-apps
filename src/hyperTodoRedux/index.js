@@ -1,6 +1,12 @@
 import { app } from "hyperapp"
-import MainView from './containers/MainView'
-import store from './store'
+import MainView from './components/MainView'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+import { provider } from './store'
+
+let store = createStore(todoApp)
+
+provider(store)
 
 /**
  * note that hyperapp has a diffrent concept of actions with redux

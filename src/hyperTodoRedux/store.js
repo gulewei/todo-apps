@@ -1,20 +1,18 @@
-import { createStore } from 'redux'
-import todoApp from './reducers'
+import { app } from "hyperapp"
 
-let store = createStore(todoApp)
-
-// no devtool avalible for hyperapp, set global vlaue for debug
-window.$store = store
-
-export default store
+let _store = null
 
 export function connect (mapStateToProps, mapDispatchToProps) {
   return Component => (ownProps, ownChildren) => Component(
     {
-      ...mapStateToProps(store.getState(), ownProps),
-      ...mapDispatchToProps(store.dispatch, ownProps),
+      ...mapStateToProps(_store.getState(), ownProps),
+      ...mapDispatchToProps(_store.dispatch, ownProps),
       ...ownProps
     },
     ownChildren
   )
+}
+
+export function provider (store) {
+  _store = store
 }
