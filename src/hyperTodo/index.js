@@ -1,11 +1,9 @@
 import { app } from "hyperapp"
-import MainView from './components/MainView'
-import store from './state/store'
-import { hyperActions } from './actions/hyperActions'
+import MainView from './containers/MainView'
+import actions from './actions'
+import state from './state'
 
 const appHandler = app(
-  { state: store, view: MainView, actions: hyperActions },
+  { state, actions, view: MainView },
   document.getElementById('root')
 )
-
-store.subscribe(() => appHandler.set(store.getState()))

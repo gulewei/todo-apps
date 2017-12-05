@@ -1,28 +1,44 @@
-export const addTodo = (text, id) => {
-  return {
-    type: 'ADD_TODO',
-    id,
-    text
-  }
-}
+export default {
+  // todos
 
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
-    filter
-  }
-}
+  addTodo: ({ id, text }) => state => ({
+    todos: state.todos.concat({
+      id,
+      text,
+      completed: false
+    })
+  }),
 
-export const toggleTodo = id => {
-  return {
-    type: 'TOGGLE_TODO',
-    id
-  }
-}
+  removeTodo: id => state => ({
+    todos: state.todos.filter(t => {
+      return t.id !== id
+    })
+  }),
 
-export const inputTodeText = text => {
-  return {
-    type: 'INPUT_TODO_TEXT',
-    text
+  toggleTodo: id => state => ({
+    todos: state.todos.map(t => {
+      return t.id !== id
+        ? t
+        : { ...t, completed: !t.completed }
+    })
+  }),
+
+  // input
+  inputTodoText: text => state => ({
+    todoText: text
+  }),
+
+  // filter
+  setVisibilityFilter: filterType => state => {
+    console.log(filterType)
+    return {
+      visibilityFilter: filterType
+    }
+  },
+
+  // ...
+
+  getState: () => state => {
+    window.$state = state
   }
 }

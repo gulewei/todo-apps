@@ -10,9 +10,15 @@ const React = {
 const MainView = state => actions => {
   return (
     <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <FilterFooter />
+      <AddTodo
+        state={state} actions={actions}
+      />
+      <VisibleTodoList
+        state={state} actions={actions}
+      />
+      <FilterFooter
+        state={state} actions={actions}
+      />
     </div>
   )
 }

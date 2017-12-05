@@ -1,7 +1,5 @@
 import { h } from "hyperapp"
 import TodoList from '../components/TodoList.js'
-import store from '../state/store.js'
-import { toggleTodo } from '../actions'
 
 const React = {
   createElement: h
@@ -19,18 +17,13 @@ const todoFilter = (todos, filterType) => {
   }
 }
 
-const dispatch = id => store.dispatch(toggleTodo(id))
-
-const VisibleFilter = () => {
-  const state = store.getState()
-  return (
-    <div>
-      <TodoList
-        todos={todoFilter(state.todos, state.visibilityFilter)}
-        onTodoClick={dispatch}
-      />
-    </div>
-  )
-}
+const VisibleFilter = ({ state, actions }) => (
+  <div>
+    <TodoList
+      todos={todoFilter(state.todos, state.visibilityFilter)}
+      onTodoClick={actions.toggleTodo}
+    />
+  </div>
+)
 
 export default VisibleFilter

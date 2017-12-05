@@ -1,6 +1,4 @@
 import { h } from "hyperapp"
-import store from '../state/store.js'
-import { addTodo, inputTodeText } from '../actions'
 
 const React = {
   createElement: h
@@ -8,28 +6,21 @@ const React = {
 
 var nextTodoId = 1
 
-const addTodoDispath = (text, id) => store.dispatch(addTodo(text, id))
-const inputDispath = text => store.dispatch(inputTodeText(text))
-
-const AddTodo = () => {
-  const state = store.getState()
-  return (
-    <div>
-      <form
-        onsubmit={(e) => {
-          e.preventDefault()
-          addTodoDispath(state.todoText, `t_${nextTodoId++}`)
-          inputDispath('')
-        }}
-      >
-        <input type="text"
-          oninput={(e) => inputDispath(e.target.value)}
-          value={state.todoText}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-    </div>
-  )
-
-}
+const AddTodo = ({ state, actions }) => ((
+  <div>
+    <form
+      onsubmit={(e) => {
+        e.preventDefault()
+        actions.addTodo({ id: `t_${nextTodoId++}`, text: state.todoText })
+        actions.inputTodoText('')
+      }}
+    >
+      <input type="text"
+        oninput={(e) => actions.inputTodoText(e.target.value)}
+        value={state.todoText}
+      />
+      <button type="submit">Add Todo</button>
+    </form>
+  </div>
+))
 export default AddTodo

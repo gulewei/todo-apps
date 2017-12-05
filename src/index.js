@@ -1,1 +1,1 @@
-import './hyperTodoRedux'
+import './hyperTodo'

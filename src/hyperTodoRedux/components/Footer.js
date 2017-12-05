@@ -9,9 +9,11 @@ const Footer = ({ setVisibilityFilter }) => (
     <a href="#all"
       onclick={e => setVisibilityFilter('SHOW_ALL')}
     >Show All</a>
+    {'  '}
     <a href="#done"
       onclick={e => setVisibilityFilter('SHOW_COMPLETED')}
     >Done</a>
+    {'  '}
     <a href="#active"
       onclick={e => setVisibilityFilter('SHOW_ACTIVE')}
     >Active</a>

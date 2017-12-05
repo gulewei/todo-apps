@@ -1,5 +1,5 @@
 import { app } from "hyperapp"
-import MainView from './components/MainView'
+import MainView from './containers/MainView'
 import store from './store'
 
 /**
