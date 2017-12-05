@@ -19,7 +19,7 @@ export default {
     todos: state.todos.map(t => {
       return t.id !== id
         ? t
-        : { ...t, completed: !t.completed }
+        : { completed: !t.completed, ...t }
     })
   }),
 

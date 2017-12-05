@@ -20,7 +20,7 @@ export const toggleTodo = id => {
   }
 }
 
-export const inputTodeText = text => {
+export const inputTodoText = text => {
   return {
     type: 'INPUT_TODO_TEXT',
     text

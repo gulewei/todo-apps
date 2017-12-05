@@ -1,35 +1,20 @@
-import { h } from "hyperapp"
-import store from '../store.js'
-import { addTodo, inputTodeText } from '../actions'
+import { connect } from '../store'
+import { addTodo, inputTodoText } from '../actions'
+import TodoInput from '../components/TodoInput'
 
-const React = {
-  createElement: h
-}
+let nextTodoId = 1
 
-var nextTodoId = 1
+const AddTodo = connect(
+  state => ({
+    todoText: state.todoText
+  }),
+  dispatch => ({
+    addTodo: text => {
+      dispatch(addTodo(text, `t_${nextTodoId++}`))
+      dispatch(inputTodoText(''))
+    },
+    inputTodoText: text => dispatch(inputTodoText(text))
+  })
+)(TodoInput)
 
-const addTodoDispath = (text, id) => store.dispatch(addTodo(text, id))
-const inputDispath = text => store.dispatch(inputTodeText(text))
-
-const AddTodo = () => {
-  const state = store.getState()
-  return (
-    <div>
-      <form
-        onsubmit={(e) => {
-          e.preventDefault()
-          addTodoDispath(state.todoText, `t_${nextTodoId++}`)
-          inputDispath('')
-        }}
-      >
-        <input type="text"
-          oninput={(e) => inputDispath(e.target.value)}
-          value={state.todoText}
-        />
-        <button type="submit">Add Todo</button>
-      </form>
-    </div>
-  )
-
-}
 export default AddTodo
