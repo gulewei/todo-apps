@@ -1,6 +1,6 @@
 import { h } from "hyperapp"
 import Footer from '../components/Footer'
-import store from '../store'
+import store from '../state/store'
 import { setVisibilityFilter } from '../actions'
 
 const React = {

@@ -1,6 +1,6 @@
 import { h } from "hyperapp"
 import TodoList from '../components/TodoList.js'
-import store from '../store.js'
+import store from '../state/store.js'
 import { toggleTodo } from '../actions'
 
 const React = {

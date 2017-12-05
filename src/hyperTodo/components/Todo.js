@@ -4,10 +4,10 @@ const React = {
   createElement: h
 }
 
-const Todo = ({ toggleTodo, completed, text }) => (
+const Todo = ({ onClick, completed, text }) => (
   <li
-    onclick={toggleTodo}
-    style={{
+    onclick={onClick}
+    style={ {
       textDecoration: completed ? 'line-through' : 'none'
     }}
   >

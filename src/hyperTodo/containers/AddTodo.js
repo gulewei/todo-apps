@@ -1,5 +1,5 @@
 import { h } from "hyperapp"
-import store from '../store.js'
+import store from '../state/store.js'
 import { addTodo, inputTodeText } from '../actions'
 
 const React = {
