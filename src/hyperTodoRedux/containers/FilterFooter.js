@@ -1,6 +1,6 @@
-import Footer from '../components/Footer'
+import { connect } from '../hyperapp-redux'
 import { setVisibilityFilter } from '../actions'
-import { connect } from '../store.js'
+import Footer from '../components/Footer'
 
 const FilterFooter = connect(
   () => undefined,

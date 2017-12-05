@@ -1,4 +1,4 @@
-import { connect } from '../store.js'
+import { connect } from '../hyperapp-redux'
 import { toggleTodo } from '../actions'
 import TodoList from '../components/TodoList.js'
 

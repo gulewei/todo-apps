@@ -13,6 +13,23 @@ export function connect (mapStateToProps, mapDispatchToProps) {
   )
 }
 
-export function provider (store) {
+export function provider (store, view) {
   _store = store
+
+  return {
+    state: {},
+    actions: {
+      reDraw: () => prevState => ({})
+    },
+    view,
+  }
+}
+
+export default function createReduxApp (store, view, el) {
+  const { reDraw } = app(
+    provider(store, view),
+    el
+  )
+
+  store.subscribe(reDraw)
 }

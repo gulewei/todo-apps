@@ -1,4 +1,4 @@
-import { connect } from '../store'
+import { connect } from '../hyperapp-redux'
 import { addTodo, inputTodoText } from '../actions'
 import TodoInput from '../components/TodoInput'
 
