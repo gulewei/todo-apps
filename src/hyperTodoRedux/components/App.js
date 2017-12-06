@@ -7,14 +7,12 @@ const React = {
   createElement: h
 }
 
-const MainView = state => actions => {
-  return (
-    <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <FilterFooter />
-    </div>
-  )
-}
+const App = () => (
+  <div>
+    <AddTodo />
+    <VisibleTodoList />
+    <FilterFooter />
+  </div>
+)
 
-export default MainView
+export default App

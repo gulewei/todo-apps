@@ -1,4 +1,4 @@
-import { connect } from '../hyperapp-redux'
+import { connect } from '../utils'
 import { setVisibilityFilter } from '../actions'
 import Footer from '../components/Footer'
 
