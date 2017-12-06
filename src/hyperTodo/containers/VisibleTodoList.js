@@ -1,9 +1,7 @@
 import { h } from "hyperapp"
 import TodoList from '../components/TodoList.js'
 
-const React = {
-  createElement: h
-}
+/** @jsx h */
 
 const todoFilter = (todos, filterType) => {
   switch (filterType) {

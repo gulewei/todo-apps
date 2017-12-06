@@ -1,9 +1,7 @@
 import { h } from "hyperapp"
 import Todo from './Todo'
 
-const React = {
-  createElement: h
-}
+/** @jsx h */
 
 const TodoList = ({ todos, onTodoClick }) => (
   <ul>

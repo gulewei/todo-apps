@@ -1,9 +1,7 @@
 import { h } from "hyperapp"
 import Footer from '../components/Footer'
 
-const React = {
-  createElement: h
-}
+/** @jsx h */
 
 const FilterFooter = ({ actions }) => (
   <Footer setVisibilityFilter={actions.setVisibilityFilter} />

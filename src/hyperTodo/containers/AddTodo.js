@@ -1,8 +1,6 @@
 import { h } from "hyperapp"
 
-const React = {
-  createElement: h
-}
+/** @jsx h */
 
 var nextTodoId = 1
 

@@ -3,9 +3,7 @@ import AddTodo from '../containers/AddTodo'
 import VisibleTodoList from '../containers/VisibleTodoList'
 import FilterFooter from '../containers/FilterFooter'
 
-const React = {
-  createElement: h
-}
+/** @jsx h */
 
 const MainView = state => actions => {
   return (
