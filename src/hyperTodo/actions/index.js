@@ -30,15 +30,8 @@ export default {
 
   // filter
   setVisibilityFilter: filterType => state => {
-    console.log(filterType)
     return {
       visibilityFilter: filterType
     }
-  },
-
-  // ...
-
-  getState: () => state => {
-    window.$state = state
   }
 }

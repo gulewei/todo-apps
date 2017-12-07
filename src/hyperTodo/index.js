@@ -1,9 +1,10 @@
-import { app } from "hyperapp"
-import MainView from './containers/MainView'
+import { app } from 'hyperapp'
 import actions from './actions'
 import state from './state'
+import MainView from './components/MainView'
 
-const appHandler = app(
+
+app(
   { state, actions, view: MainView },
   document.getElementById('root')
 )

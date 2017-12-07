@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from 'picodom'
 import Todo from './Todo'
 
 /** @jsx h */
