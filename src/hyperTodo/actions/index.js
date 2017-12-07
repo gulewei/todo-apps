@@ -10,17 +10,15 @@ export default {
   }),
 
   removeTodo: id => state => ({
-    todos: state.todos.filter(t => {
-      return t.id !== id
-    })
+    todos: state.todos.filter(t => t.id !== id)
   }),
 
   toggleTodo: id => state => ({
-    todos: state.todos.map(t => {
-      return t.id !== id
+    todos: state.todos.map(
+      t => t.id !== id
         ? t
         : { ...t, completed: !t.completed }
-    })
+    )
   }),
 
   // input
@@ -29,9 +27,7 @@ export default {
   }),
 
   // filter
-  setVisibilityFilter: filterType => state => {
-    return {
-      visibilityFilter: filterType
-    }
-  }
+  setVisibilityFilter: filterType => state => ({
+    visibilityFilter: filterType
+  })
 }
