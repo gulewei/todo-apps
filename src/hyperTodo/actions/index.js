@@ -1,33 +1,34 @@
+import { mapSlice, simpleUpdate } from '../utils'
+
+const todos = mapSlice('todos', {
+  add: ({ id, text }) =>
+    state =>
+      state.concat({
+        id,
+        text,
+        completed: false
+      }),
+
+  toggle: id =>
+    state =>
+      state.map(
+        t => t.id !== id
+          ? t
+          : { ...t, completed: !t.completed }
+      )
+})
+
+const todoText = mapSlice('todoText', {
+  input: simpleUpdate
+})
+
+const visibilityFilter = mapSlice('visibilityFilter', {
+  set: simpleUpdate
+})
+
 export default {
-  // todos
-
-  addTodo: ({ id, text }) => state => ({
-    todos: state.todos.concat({
-      id,
-      text,
-      completed: false
-    })
-  }),
-
-  removeTodo: id => state => ({
-    todos: state.todos.filter(t => t.id !== id)
-  }),
-
-  toggleTodo: id => state => ({
-    todos: state.todos.map(
-      t => t.id !== id
-        ? t
-        : { ...t, completed: !t.completed }
-    )
-  }),
-
-  // input
-  inputTodoText: text => state => ({
-    todoText: text
-  }),
-
-  // filter
-  setVisibilityFilter: filterType => state => ({
-    visibilityFilter: filterType
-  })
+  addTodo: todos.add,
+  toggleTodo: todos.toggle,
+  inputTodoText: todoText.input,
+  setVisibilityFilter: visibilityFilter.set
 }

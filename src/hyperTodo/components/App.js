@@ -23,7 +23,7 @@ const MainView = state => actions => (
   <div>
     <TodoInput
       addTodo={text => {
-        actions.addTodo(`t_${nextTodoId++}`, text)
+        actions.addTodo({ id: `t_${nextTodoId++}`, text })
         actions.inputTodoText('')
       }}
       inputTodoText={actions.inputTodoText}
