@@ -1,4 +1,18 @@
+import { patch } from 'picodom'
+
 let _store = null
+
+export const createRender = (View, el) => {
+  let node
+  return props => patch(el, node, (node = View(props)))
+}
+
+export const provider = (store, render, autoRender) => {
+  _store = store
+  store.subscribe(render)
+
+  autoRender && render()
+}
 
 export const connect = (mapStateToProps, mapDispatchToProps) =>
   Component =>
@@ -11,19 +25,3 @@ export const connect = (mapStateToProps, mapDispatchToProps) =>
         },
         ownChildren
       )
-
-export const provider = (store, View) => {
-  _store = store
-
-  return {
-    state: {},
-    actions: {
-      reDraw: () => prevState => ({})
-    },
-    view: state => actions => {
-      store.subscribe(actions.reDraw)
-      let vnodes = View()
-      return vnodes
-    },
-  }
-}

@@ -1,15 +1,9 @@
-import { app, h } from 'hyperapp'
 import App from './components/App'
 import { createStore } from 'redux'
 import todoApp from './reducers'
-import { provider } from './utils'
+import { provider, createRender } from './utils'
 
 /** @jsx h */
-
-/**
- * note that hyperapp has a diffrent concept of actions with redux
- * actions in hyperapp are same like reducers in redux
- */
 
 const store = createStore(
   todoApp,
@@ -17,7 +11,7 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-app(
-  provider(store, App),
-  document.getElementById('root')
-)
+const render = createRender(App, document.getElementById('root'))
+
+provider(store, render, true)
+
